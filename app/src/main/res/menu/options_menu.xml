@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/rules"
+            android:title="@string/rules"
+            />
+        <item
+            android:id="@+id/editPlayer"
+            android:title="@string/editPlayer"
+            />
+        <item
+            android:id="@+id/playerStats"
+            android:title="@string/playerStats"
+            />
+        <item
+            android:id="@+id/elementsStats"
+            android:title="@string/elementsStats"
+            />
+</menu>

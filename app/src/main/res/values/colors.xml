@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#051466</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#ff4080</color>
+    <color name="colorBtnSheldon">#009688</color>
+    <color name="colorBtnLeonard">#0099cc</color>
+    <color name="colorBtnPenny">#aa66cc</color>
+    <color name="colorBtnPlayerOne">#aaaaaa</color>
+    <color name="myColour">#000000</color>
+    <color name="textColour">#FFFFFF</color>
+</resources>

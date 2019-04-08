@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Schere, Stein, Papier, Echse, Spock</string>
+    <string name="pvp">Spiele gegen einen anderen Spieler:</string>
+    <string name="pvc">Oder wähle einen Gegenspieler:</string>
+    <string name="sheldon">Sheldon</string>
+    <string name="leonard">Leonard</string>
+    <string name="penny">Penny</string>
+    <string name="rules">Spielregeln</string>
+    <string name="statistics">Statistiken</string>
+    <string name="rulesHeader">Spielregeln</string>
+    <string name="rulesTxt">Schere schneidet Papier\n
+    Papier bedeckt Stein\n
+    Stein zerquetscht Echse\n
+    Echse vergiftet Spock\n
+    Spock zertrümmert Schere\n
+    Schere köpft Echse\n
+    Echse frisst Papier\n
+    Papier widerlegt Spock\n
+    Spock verdampft Stein\n
+    Stein schleift Schere</string>
+    <string name="back">Zurück</string>
+    <string name="start">Start</string>
+    <string name="draws">Unentschieden</string>
+    <string name="losses">Verloren</string>
+    <string name="scissorsWin">Gewonnen Schere</string>
+    <string name="lizardWin">Gewonnen Echse</string>
+    <string name="lizardLoss">Verloren Echse</string>
+    <string name="rockLoss">Verloren Stein</string>
+    <string name="paperLoss">Verloren Papier</string>
+    <string name="scissorsLoss">Verloren Schere</string>
+    <string name="spockWin">Gewonnen Spock</string>
+    <string name="rockWin">Gewonnen Stein</string>
+    <string name="paperWin">Gewonnen Papier</string>
+    <string name="spockLoss">Gewonnen Spock</string>
+    <string name="player1">Spieler 1</string>
+    <string name="player2">Spieler 2</string>
+    <string name="player3">Spieler 3</string>
+    <string name="player4">Spieler 4</string>
+    <string name="player5">Spieler 5</string>
+    <string name="error">Bitte wähle einen anderen Spieler!</string>
+    <string name="player">Spieler</string>
+    <string name="done">Fertig</string>
+    <string name="delete">Löschen</string>
+    <string name="editPlayer">Spieler bearbeiten</string>
+    <string name="playerName">Spielername</string>
+    <string name="save">Speichern</string>
+    <string name="pickPlayers">Waehle deine Spieler!</string>
+    <string name="wins">Gewinne</string>
+    <string name="result">Ergebnis</string>
+    <string name="pennyPicks">"Peny waehlt: "</string>
+    <string name="rock">"Stein "</string>
+    <string name="paper">"Papier "</string>
+    <string name="scissors">"Schere "</string>
+    <string name="lizard">"Echse "</string>
+    <string name="spock">"Spock "</string>
+    <string name="draw">Unentschieden</string>
+    <string name="cuts">"schneidet "</string>
+    <string name="leonardPicks">"Leonard waehlt: "</string>
+    <string name="covers">"bedeckt "</string>
+    <string name="crushes">"zerquetscht "</string>
+    <string name="poisons">"vergiftet "</string>
+    <string name="smashes">"zertrümmert "</string>
+    <string name="decapitates">"köpft "</string>
+    <string name="eats">"frisst "</string>
+    <string name="disproves">"widerlegt "</string>
+    <string name="vaporizes">"verdampft "</string>
+    <string name="crushesS">"schleift "</string>
+    <string name="winsTxt">gewinnt.</string>
+    <string name="turn">"Runde: "</string>
+    <string name="score">"Spielstand: "</string>
+    <string name="pickPlayer">Wähle einen Spieler!</string>
+    <string name="deletePlayer">Spieler löschen</string>
+    <string name="deleteAll">Alle Spieler löschen</string>
+    <string name="quit">Beenden</string>
+    <string name="mainMenu">Hauptmenu</string>
+    <string name="playerStats">Spielerstatistik</string>
+    <string name="elementsStats">Elementestatistik</string>
+</resources>

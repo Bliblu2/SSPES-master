@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="app_name">Rock, Paper, Scissors, Lizard, Spock</string>
+        <string name="pvp">Play against another Player</string>
+        <string name="pvc">Or choose your Opponent</string>
+        <string name="sheldon">Sheldon </string>
+        <string name="leonard">Leonard </string>
+        <string name="penny">Penny </string>
+        <string name="rules">Rules</string>
+        <string name="statistics">Statistics</string>
+        <string name="rulesHeader">Rules of the Game</string>
+        <string name="rulesTxt">Scissors cuts Paper\n
+            Paper covers Rock\n
+            Rock crushes Lizard\n
+            Lizard poisons Spock\n
+            Spock smashes Scissors\n
+            Scissors decapitates Lizard\n
+            Lizard eats Paper\n
+            Paper disproves Spock\n
+            Spock vaporizes Rock\n
+            (and as it always has)\n
+            Rock crushes Scissors\n</string>
+        <string name="back">Back</string>
+        <string name="start">Start</string>
+        <string name="draws">Draws</string>
+        <string name="losses">Losses</string>
+        <string name="wins">Wins</string>
+        <string name="rockWin">Wins Rock</string>
+        <string name="paperWin">Wins Paper</string>
+        <string name="scissorsWin">Wins Scissors</string>
+        <string name="lizardWin">Wins Lizard</string>
+        <string name="lizardLoss">Losses Lizard</string>
+        <string name="rockLoss">Losses Rock</string>
+        <string name="paperLoss">Losses Paper</string>
+        <string name="scissorsLoss">Losses Scissors</string>
+        <string name="spockWin">Wins Spock</string>
+        <string name="spockLoss">Losses Spock</string>
+        <string name="player1">Player 1</string>
+        <string name="player2">Player 2</string>
+        <string name="player3">Player 3</string>
+        <string name="player4">Player 4</string>
+        <string name="player5">Player 5</string>
+        <string name="slot1" translatable="false">1</string>
+        <string name="slot2" translatable="false">2</string>
+        <string name="slot3" translatable="false">3</string>
+        <string name="slot4" translatable="false">4</string>
+        <string name="slot5" translatable="false">5</string>
+        <string name="error">Please pick another player!</string>
+        <string name="player">Player</string> // ?
+        <string name="done">Done</string>
+        <string name="delete">Delete</string>
+        <string name="editPlayer">Edit player</string>
+        <string name="playerName">Player name</string>
+        <string name="save">Save</string>
+        <string name="pickPlayers">Pick your Players!</string>
+        <string name="result">Result</string>
+        <string name="turn">"Turn: "</string>
+        <string name="pennyPicks">"Penny picks: "</string>
+        <string name="leonardPicks">"Leonard picks: "</string>
+        <string name="rock">"Rock "</string>
+        <string name="paper">"Paper "</string>
+        <string name="scissors">"Scissors "</string>
+        <string name="lizard">"Lizard "</string>
+        <string name="spock">"Spock "</string>
+        <string name="winsTxt">wins.</string>
+        <string name="draw">Draw</string>
+    <string name="cuts">"cuts "</string>
+        <string name="covers">"covers "</string>
+        <string name="crushes">"crushes "</string>
+        <string name="poisons">"poisons "</string>
+        <string name="smashes">"smashes "</string>
+        <string name="decapitates">"decapitates "</string>
+        <string name="eats">"eats "</string>
+        <string name="disproves">"disproves "</string>
+        <string name="vaporizes">"vaporizes "</string>
+        <string name="crushesS">"crushes "</string>
+        <string name="leonardTxt" translatable="false">"Leonard "</string>
+        <string name="pennyTxt" translatable="false">"Penny "</string>
+        <string name="sheldonTxt" translatable="false">"Sheldon "</string>
+        <string name="score">"Score: "</string>
+    <string name="pickPlayer">Pick a player!</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="deletePlayer">Delete player</string>
+    <string name="deleteAll">Delete all</string>
+    <string name="quit">quit</string>
+    <string name="mainMenu">Main menu</string>
+    <string name="playerStats">Playerstatistics</string>
+    <string name="elementsStats">Elementsstatistics</string>
+</resources>
