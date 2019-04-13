@@ -48,6 +48,8 @@ public class GameActivity extends AppCompatActivity {
         pullStatistics();
         player1ID = myDS.getPlayer1();
         player2ID = myDS.getPlayer2();
+        nemesis = getPlayerName(player1ID);
+        hero = getPlayerName(player2ID);
         turn = 1;
 
 
@@ -612,15 +614,15 @@ public class GameActivity extends AppCompatActivity {
     public void endRound(){
         switch (WinnerCalculation.calculateWinner(playhero, playnemesis)){
             case 0:
-                //textResult.setText(myST.changeStatusText(playhero));
+                textResult.setText(myST.changeStatusText(playhero));
                 draw(playhero);
                 break;
             case 1:
-                //textResult.setText(myST.changeStatusText(playhero, playnemesis, 1));
+                textResult.setText(myST.changeStatusText(playhero, playnemesis, 1, myDS.getPlayer1(), myDS.getPlayer2(), hero, nemesis));
                 playerOneWins(playnemesis, playhero);
                 break;
             case 2:
-                //textResult.setText(myST.changeStatusText(playhero, playnemesis, 2));
+                textResult.setText(myST.changeStatusText(playhero, playnemesis, 2,  myDS.getPlayer1(), myDS.getPlayer2(), hero, nemesis));
                 playerTwoWins(playnemesis, playhero);
                 break;
             default:
@@ -632,6 +634,36 @@ public class GameActivity extends AppCompatActivity {
         playhero = 0;
     }
 
+    public String getPlayerName(int playerID){
+        String playerName = "Fehler";
+        switch (playerID){
+            case 1:
+                playerName = myDS.getSlot1name();
+                break;
+            case 2:
+                playerName = myDS.getSlot2name();
+                break;
+            case 3:
+                playerName = myDS.getSlot3name();
+                break;
+            case 4:
+                playerName = myDS.getSlot4name();
+                break;
+            case 5:
+                playerName = myDS.getSlot5name();
+                break;
+            case 6:
+                playerName = "Leonard";
+                break;
+            case 7:
+                playerName = "Penny";
+                break;
+            case 8:
+                playerName = "Sheldon";
+                break;
+        }
+        return playerName;
+    }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){

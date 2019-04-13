@@ -76,4 +76,15 @@
     <string name="mainMenu">Hauptmenu</string>
     <string name="playerStats">Spielerstatistik</string>
     <string name="elementsStats">Elementestatistik</string>
+    <string name="paperVsRock">Papier bedeckt Stein.</string>
+    <string name="scissorsVsRock">Stein schleift Schere.</string>
+    <string name="scissorsVsPaper">Schere schneidet Papier.</string>
+    <string name="scissorsVsLizard">Schere köpft Echse.</string>
+    <string name="scissorsVsSpock">Spock zertrümmert Schere.</string>
+    <string name="rockVsPaper">Papier bedeckt Stein.</string>
+    <string name="rockVsLizard">Stein zerquetscht Echse.</string>
+    <string name="rockVsSpock">Spock vaporisiert Stein.</string>
+    <string name="paperVsLizard">Echse frisst Papier.</string>
+    <string name="paperVsSpock">Papier widerlegt Spock.</string>
+    <string name="lizardVsSpock">Echse vergiftet Spock.</string>
 </resources>

@@ -10,6 +10,7 @@ public class StatusText extends AppCompatActivity {
 
     DataStorage myDS;
     SharedPreferences mySP;
+    String lollipop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -18,13 +19,11 @@ public class StatusText extends AppCompatActivity {
         pullStatistics();
     }
 
-    public String changeStatusText(int elementOne, int elementTwo, int winner){
-        mySP = getSharedPreferences("myData", MODE_PRIVATE);
-        pullStatistics();
+    public String changeStatusText(int elementOne, int elementTwo, int winner, int player1ID, int player2ID, String player1Name, String player2Name){
         String elementText = "Fehler";
         String playerText = "Fehler";
-        int player1 = myDS.getPlayer1();
-        int player2 = myDS.getPlayer2();
+        //int player1 = myDS.getPlayer1();
+        //int player2 = myDS.getPlayer2();
 
         //Set element text based on elements played
         if ((elementOne == 1 && elementTwo == 2) || (elementOne == 2 && elementTwo == 1)){
@@ -34,7 +33,8 @@ public class StatusText extends AppCompatActivity {
         } else if ((elementOne == 1 && elementTwo == 4) ||(elementOne == 4 && elementTwo == 1)){
             elementText = getString(R.string.scissorsVsLizard);
         } else if ((elementOne == 1 && elementTwo == 5) || (elementOne == 5 && elementTwo == 1)){
-            elementText = getString(R.string.scissorsVsSpock);
+            //elementText = getString(R.string.scissorsVsSpock);
+            elementText = "Blob";
         } else if ((elementOne == 2 && elementTwo == 3) || (elementOne == 3 && elementTwo == 2)){
             elementText = getString(R.string.rockVsPaper);
         } else if ((elementOne == 2 && elementTwo == 4) || (elementOne == 4 && elementTwo == 2)){
@@ -51,13 +51,14 @@ public class StatusText extends AppCompatActivity {
 
         //Set player text based on winner
         if (winner == 1){
-            playerText = player1 + " " + getString(R.string.winsTxt) + ".";
+            playerText = player1Name + " wins.";
         } else if (winner == 2){
-            playerText = player2 + " " + getString(R.string.winsTxt) + ".";
+            playerText = player2Name + " wins.";
         }
 
 
         String statusText = elementText + "\n" + playerText;
+        this.lollipop = statusText;
 
         return statusText;
     }
@@ -65,10 +66,9 @@ public class StatusText extends AppCompatActivity {
 
     //Set element text based on element when draw
     public String changeStatusText(int element) {
-        mySP = getSharedPreferences("myData", MODE_PRIVATE);
-        pullStatistics();
         String elementText = "Fehler";
         elementText = getString(R.string.draw) + "!";
+        this.lollipop = elementText;
         return elementText;
     }
 
