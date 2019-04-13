@@ -86,4 +86,15 @@
     <string name="mainMenu">Main menu</string>
     <string name="playerStats">Playerstatistics</string>
     <string name="elementsStats">Elementsstatistics</string>
+    <string name="paperVsRock">Paper covers Rock.</string>
+    <string name="scissorsVsRock">Rock crushes Scissors.</string>
+    <string name="scissorsVsPaper">Scissors cut paper.</string>
+    <string name="scissorsVsLizard">Scissors decapitates lizard.</string>
+    <string name="scissorsVsSpock">Spock smashes scissors.</string>
+    <string name="rockVsPaper">Paper covers rock.</string>
+    <string name="rockVsLizard">Rock crushes lizard.</string>
+    <string name="rockVsSpock">Spock vaporizes rock.</string>
+    <string name="paperVsLizard">Lizard eats paper.</string>
+    <string name="paperVsSpock">Paper disproves Spock.</string>
+    <string name="lizardVsSpock">Lizard poisons Spock.</string>
 </resources>

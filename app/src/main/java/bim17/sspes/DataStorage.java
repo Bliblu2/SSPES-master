@@ -52,7 +52,7 @@ class DataStorage {
 
     private int player1;    //1-5 nach Playerslots
     private int player2;    //1-8: 1-5 nach Playerslots, 6 Leonard, 7 Penny, 8 Sheldon
-    private int allturns;
+
 
     /*Methode, die einen Spieler loescht
         @param int slotID //Die ID des Slots, der geloescht wird
@@ -269,14 +269,6 @@ class DataStorage {
 
     public void setPlayer2(int player2) {
         this.player2 = player2;
-    }
-
-    public int getAllturns() {
-        return allturns;
-    }
-
-    public void setAllturns(int allturns) {
-        this.allturns = allturns;
     }
 
     public int getLeonardLosses() {

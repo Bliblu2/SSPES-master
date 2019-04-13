@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     // neue Activity aufrufen, um Spielernamen einzugeben
     public void onClickPlayerActivity(View v) {
-        Intent intent = new Intent(MainActivity.this, EditPlayerActivity.class);
+        Intent intent = new Intent(MainActivity.this, PickPlayerActivity.class);
         startActivity(intent);
     }
 

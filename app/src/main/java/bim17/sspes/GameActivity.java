@@ -20,31 +20,11 @@ public class GameActivity extends AppCompatActivity {
     TextView textStatus, textResult, textLennard;
     Random rndGen; //Zufallsgenerator
     public int playhero, playnemesis; //Variable fuer Auswahl des Computers
-    int turns, compwin, playerwin;
+    int round, compwin, playerwin, turn;
     int player1ID, player2ID;
-    DataStorage dsLeonard;
-    SharedPreferences sharedLeonard;
-  /*  String scissors = "Scissors";
-    String rock = getString(R.string.rock);
-    String paper = getString(R.string.paper);
-    String lizard = getString(R.string.lizard);
-    String spock = getString(R.string.spock);
-    String winsTxt = getString(R.string.winsTxt);
-    String draw2 = getString(R.string.draw);
-    String cuts =getString(R.string.cuts);
-    String vaporizes = getString(R.string.vaporizes);
-    String covers = getString(R.string.covers);
-    String decapitates = getString(R.string.decapitates);
-    String eats = getString(R.string.eats);
-    String crushes = getString(R.string.crushes);
-    String smashes = getString(R.string.smashes);
-    String poisens = getString(R.string.poisons);
-    String disproves = getString(R.string.disproves);
-    String crushesS = getString(R.string.crushesS);
-    String you = getString(R.string.you);
-    String turn = getString(R.string.turn);
-    String score = getString(R.string.score);
-    */
+    DataStorage myDS;
+    SharedPreferences mySP;
+    StatusText myST;
     String nemesis;
     String hero;
 
@@ -61,341 +41,209 @@ public class GameActivity extends AppCompatActivity {
         textStatus = findViewById(R.id.textStatus);
         textResult = findViewById(R.id.textResult);
         textLennard = findViewById(R.id.textLennard);
+        myST = new StatusText();
         rndGen = new Random();
-        turns = 0;
-        sharedLeonard = getSharedPreferences("myData", MODE_PRIVATE);
-        erbitten();
-        player1ID = dsLeonard.getPlayer1();
-        player2ID = dsLeonard.getPlayer2();
-
-        if (player2ID == 6) {
-            nemesis = getString(R.string.leonard);
-        } else if (player2ID == 7) {
-            nemesis = getString(R.string.penny);
-        } else if (player2ID == 8) {
-            nemesis = getString(R.string.sheldon);
-        } else if (player2ID == 1) {
-            nemesis = dsLeonard.getSlot1name();
-        } else if (player2ID == 2) {
-            nemesis = dsLeonard.getSlot2name();
-        } else if (player2ID == 3) {
-            nemesis = dsLeonard.getSlot3name();
-        } else if (player2ID == 4) {
-            nemesis = dsLeonard.getSlot4name();
-        } else if (player2ID == 5) {
-            nemesis = dsLeonard.getSlot5name();
-        }
-        if (player1ID == 1) {
-            hero = dsLeonard.getSlot1name();
-        } else if (player1ID == 2) {
-            hero = dsLeonard.getSlot2name();
-        } else if (player1ID == 3) {
-            hero = dsLeonard.getSlot3name();
-        } else if (player1ID == 4) {
-            hero = dsLeonard.getSlot4name();
-        } else if (player1ID == 5) {
-            hero = dsLeonard.getSlot5name();
-        }
+        round = 0;
+        mySP = getSharedPreferences("myData", MODE_PRIVATE);
+        pullStatistics();
+        player1ID = myDS.getPlayer1();
+        player2ID = myDS.getPlayer2();
+        turn = 1;
 
 
+
+
+        /*
         btnScissor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playhero=1;
-                choosePlayerTwo();
+                if (turn == 1){
+                    playhero = 1;
+                    if (player2ID <= 5){
+                        turn = 2;
+                    } else if (player2ID == 6){
+                        playnemesis = Strategy.playLeonard();
+                        endRound();
+                    }
+                } else if (turn == 2){
+                    playnemesis = 1;
+                    endRound();
+                }
             }
         });
+
 
         btnRock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playhero=2;
-                choosePlayerTwo();
+                if (turn == 1){
+                    playhero = 2;
+                    if (player2ID <= 5){
+                        turn = 2;
+                    } else if (player2ID == 6){
+                        playnemesis = Strategy.playLeonard();
+                        endRound();
+                    }
+                } else if (turn == 2){
+                    playnemesis = 2;
+                    endRound();
+                }
             }
         });
 
         btnPaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playhero=3;
-                choosePlayerTwo();
+                if (turn == 1){
+                    playhero = 3;
+                    if (player2ID <= 5){
+                        turn = 2;
+                    } else if (player2ID == 6){
+                        playnemesis = Strategy.playLeonard();
+                        endRound();
+                    }
+                } else if (turn == 2){
+                    playnemesis = 3;
+                    endRound();
+                }
             }
         });
 
         btnLizard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playhero=4;
-                choosePlayerTwo();
+                if (turn == 1){
+                    playhero = 4;
+                    if (player2ID <= 5){
+                        turn = 2;
+                    } else if (player2ID == 6){
+                        playnemesis = Strategy.playLeonard();
+                        endRound();
+                    }
+                } else if (turn == 2){
+                    playnemesis = 4;
+                    endRound();
+                }
             }
         });
 
         btnSpock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playhero=5;
-                choosePlayerTwo();
+                if (turn == 1){
+                    playhero = 5;
+                    if (player2ID <= 5){
+                        turn = 2;
+                    } else if (player2ID == 6){
+                        playnemesis = Strategy.playLeonard();
+                        endRound();
+                    }
+                } else if (turn == 2){
+                    playnemesis = 5;
+                    endRound();
+                }
             }
         });
+        */
     }
 
-        public void choosePlayerTwo(){
-            if (player2ID == 6) {
-                playnemesis = rndGen.nextInt(4) + 1;
-            } else if (player2ID == 7) {
-                playnemesis = rndGen.nextInt(2) + 1;
-            } else if (player2ID == 8) {
-                playnemesis = 5;
-            }else {
-                btnScissor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        playnemesis = 1;
-                    }
-                });
-                btnRock.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        playnemesis = 2;
-                    }
-                });
-                btnPaper.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                            playnemesis = 3;
-                        playround();
-                        refreshStatus();
-                    }
-                });
-
-                btnLizard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                            playnemesis = 4;
-                    }
-                });
-
-                btnSpock.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                            playnemesis = 5;
-                    }
-                });
+    public void onClickScissors(View v){
+        if (turn == 1){
+            playhero = 1;
+            if (player2ID <= 5){
+                turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+            } else if (player2ID == 7){
+                playnemesis = Strategy.playPenny();
+            } else if (player2ID == 8){
+                playnemesis = Strategy.playSheldon();
             }
-            playround();
-            refreshStatus();
-
+        } else if (turn == 2){
+            playnemesis = 1;
+            endRound();
         }
+    }
 
-    public void teilen(DataStorage dsLeonard){
-        SharedPreferences.Editor myEditor = sharedLeonard.edit();
+    public void onClickRock(View v){
+        if (turn == 1){
+            playhero = 2;
+            if (player2ID <= 5){
+                turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            }
+        } else if (turn == 2){
+            playnemesis = 2;
+            endRound();
+        }
+    }
+
+    public void onClickPaper(View v){
+        if (turn == 1){
+            playhero = 3;
+            if (player2ID <= 5){
+                turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            }
+        } else if (turn == 2){
+            playnemesis = 3;
+            endRound();
+        }
+    }
+
+    public void onClickLizard(View v){
+        if (turn == 1){
+            playhero = 4;
+            if (player2ID <= 5){
+                turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            }
+        } else if (turn == 2){
+            playnemesis = 4;
+            endRound();
+        }
+    }
+
+    public void onClickSpock(View v){
+        if (turn == 1){
+            playhero = 5;
+            if (player2ID <= 5){
+                turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            }
+        } else if (turn == 2){
+            playnemesis = 5;
+            endRound();
+        }
+    }
+
+    public void pushStatistics(DataStorage myDS){
+        SharedPreferences.Editor myEditor = mySP.edit();
         Gson gson = new Gson();
-        String data = gson.toJson(dsLeonard);
+        String data = gson.toJson(myDS);
         myEditor.putString("data", data);
         myEditor.apply();
     }
-    public void erbitten(){
+    public void pullStatistics(){
         Gson gson = new Gson();
-        String data = sharedLeonard.getString("data", "");
-        dsLeonard = gson.fromJson(data, DataStorage.class);
-        if (dsLeonard == null){
-            dsLeonard = new DataStorage();
-        }
-    }
-
-    public void playround() {
-        erbitten();
-        if (playhero == 1) {
-            switch (playnemesis) {
-                case 1:
-                    textResult.setText(getString(R.string.scissors) + "- " + getString(R.string.scissors) + " : "
-                            + getString(R.string.draw));
-                    turns++;
-                    draw(3);
-                    break;
-                case 2:
-                    textResult.setText(getString(R.string.rock) + getString(R.string.crushesS) +
-                            getString(R.string.scissors) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(1, 3);
-                    turns++;
-                    break;
-                case 3:
-                    textResult.setText(getString(R.string.scissors) + getString(R.string.cuts) +
-                            getString(R.string.paper) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(2, 3);
-                    turns++;
-                    break;
-                case 4:
-                    textResult.setText(getString(R.string.scissors) + getString(R.string.decapitates) +
-                            getString(R.string.lizard) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(4, 3);
-                    turns++;
-                    break;
-                case 5:
-                    textResult.setText(getString(R.string.spock) + getString(R.string.vaporizes) +
-                            getString(R.string.scissors) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(5, 3);
-                    turns++;
-                    break;
-            }
-        }else if(playhero==2){
-            switch (playnemesis) {
-                case 1:
-                    textResult.setText(getString(R.string.rock) + getString(R.string.crushesS) +
-                            getString(R.string.scissors) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(3, 1);
-                    turns++;
-                    break;
-                case 2:
-                    textResult.setText(getString(R.string.rock) + "- " + getString(R.string.rock) + ": " +
-                            getString(R.string.draw));
-                    draw(1);
-                    turns++;
-                    break;
-                case 3:
-                    textResult.setText(getString(R.string.paper) + getString(R.string.covers) +
-                            getString(R.string.rock) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(2, 1);
-                    turns++;
-                    break;
-                case 4:
-                    textResult.setText(getString(R.string.rock) + getString(R.string.crushes) +
-                            getString(R.string.lizard) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(4, 1);
-                    turns++;
-                    break;
-                case 5:
-                    textResult.setText(getString(R.string.spock) + getString(R.string.vaporizes) +
-                            getString(R.string.rock) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(5, 1);
-                    turns++;
-                    break;
-            }
-        }else if(playhero==3){
-            switch (playnemesis) {
-                case 1:
-                    textResult.setText(getString(R.string.scissors) + getString(R.string.cuts) +
-                            getString(R.string.paper) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(3, 2);
-                    turns++;
-                    break;
-                case 2:
-                    textResult.setText(getString(R.string.paper) + getString(R.string.covers) +
-                            getString(R.string.rock) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(1, 2);
-                    turns++;
-                    break;
-                case 3:
-                    textResult.setText(getString(R.string.paper) + "- " + getString(R.string.paper) + ": " +
-                            getString(R.string.draw));
-                    draw(2);
-                    turns++;
-                    break;
-                case 4:
-                    textResult.setText(getString(R.string.lizard) + getString(R.string.eats) +
-                            getString(R.string.paper) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(4, 2);
-                    turns++;
-                    break;
-                case 5:
-                    textResult.setText(getString(R.string.paper) + getString(R.string.disproves) +
-                            getString(R.string.spock) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(5, 2);
-                    turns++;
-                    break;
-            }
-        } else if (playhero==4){
-            switch (playnemesis) {
-                case 1:
-                    textResult.setText(getString(R.string.scissors) + getString(R.string.decapitates) +
-                            getString(R.string.lizard) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(3, 4);
-                    turns++;
-                    break;
-                case 2:
-                    textResult.setText(getString(R.string.rock) + getString(R.string.crushes) +
-                            getString(R.string.lizard) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(1, 4);
-                    turns++;
-                    break;
-                case 3:
-                    textResult.setText(getString(R.string.lizard) + getString(R.string.eats) +
-                            getString(R.string.paper) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(2, 4);
-                    turns++;
-                    break;
-                case 4:
-                    textResult.setText(getString(R.string.lizard) + "- " + getString(R.string.lizard) + ": " +
-                            getString(R.string.draw));
-                    draw(4);
-                    turns++;
-                    break;
-                case 5:
-                    textResult.setText(getString(R.string.lizard) + getString(R.string.poisons) +
-                            getString(R.string.spock) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(5, 4);
-                    turns++;
-                    break;
-            }
-        } else if (playhero ==5){
-            switch (playnemesis) {
-                case 1:
-                    textResult.setText(getString(R.string.spock) + getString(R.string.smashes) +
-                            getString(R.string.scissors) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(3, 5);
-                    turns++;
-                    break;
-                case 2:
-                    textResult.setText(getString(R.string.spock) + getString(R.string.vaporizes) +
-                            getString(R.string.rock) + "\n" + String.valueOf(hero) + getString(R.string.winsTxt));
-                    playerwin++;
-                    playerWins(1, 5);
-                    turns++;
-                    break;
-                case 3:
-                    textResult.setText(getString(R.string.paper) + getString(R.string.disproves) +
-                            getString(R.string.spock) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(2, 5);
-                    turns++;
-                    break;
-                case 4:
-                    textResult.setText(getString(R.string.lizard) + getString(R.string.poisons) +
-                            getString(R.string.spock) + "\n" + String.valueOf(nemesis) + getString(R.string.winsTxt));
-                    compwin++;
-                    playerLoses(4, 5);
-                    turns++;
-                    break;
-                case 5:
-                    textResult.setText(getString(R.string.spock) + "- " + getString(R.string.spock) + ": " +
-                            getString(R.string.draw));
-                    draw(5);
-                    turns++;
-                    break;
-            }
+        String data = mySP.getString("data", "");
+        myDS = gson.fromJson(data, DataStorage.class);
+        if (myDS == null){
+            myDS = new DataStorage();
         }
     }
 
     public void refreshStatus() {
-        teilen(dsLeonard);
-        textStatus.setText(getString(R.string.turn) + turns + "\n"+ getString(R.string.score)
+        pushStatistics(myDS);
+        textStatus.setText(getString(R.string.turn) + round + "\n"+ getString(R.string.score)
                 + String.valueOf(hero) + " : " + String.valueOf(playerwin) + "\n" + String.valueOf(nemesis)
                  + ": " + String.valueOf(compwin));
         if(playnemesis==1){
@@ -418,124 +266,372 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     
-    public void playerWins(int playComputer, int playPlayer){
-        erbitten();
-        dsLeonard.setLeonardLosses(dsLeonard.getLeonardLosses() + 1);
-        if (player1ID == 1) {
-            dsLeonard.setSlot1wins(dsLeonard.getSlot1wins() + 1);
-        } else if (player1ID == 2) {
-            dsLeonard.setSlot2wins(dsLeonard.getSlot2wins()+1);
-        } else if (player1ID == 3) {
-            dsLeonard.setSlot3wins(dsLeonard.getSlot3wins() + 1);
-        } else if (player1ID == 4) {
-            dsLeonard.setSlot4wins(dsLeonard.getSlot4wins() + 1);
-        } else if (player1ID == 5) {
-            dsLeonard.setSlot5wins(dsLeonard.getSlot5wins() + 1);
+    public void playerOneWins(int playComputer, int playPlayer){
+        pullStatistics();
+        switch (playPlayer){
+            case 1:
+                myDS.setScissorsWins(myDS.getScissorsWins()+1);
+                break;
+            case 2:
+                myDS.setRockWins(myDS.getRockWins()+1);
+                break;
+            case 3:
+                myDS.setPaperWins(myDS.getPaperWins()+1);
+                break;
+            case 4:
+                myDS.setLizardWins(myDS.getLizardWins()+1);
+                break;
+            case 5:
+                myDS.setSpockWins(myDS.getSpockWins()+1);
+                break;
         }
-        if(playComputer == 1) {
-            dsLeonard.setRockWins(dsLeonard.getRockWins() + 1);
-        } else if (playComputer == 2){
-            dsLeonard.setPaperWins(dsLeonard.getPaperWins()+1);
-        } else if (playComputer == 3){
-            dsLeonard.setScissorsWins(dsLeonard.getScissorsWins()+1);
-        } else if (playComputer == 4){
-            dsLeonard.setLizardWins(dsLeonard.getLizardWins()+1);
-        } else if (playComputer == 5) {
-            dsLeonard.setSpockWins(dsLeonard.getSpockWins()+1);
+        switch (playComputer){
+            case 1:
+                myDS.setScissorsLosses(myDS.getScissorsLosses()+1);
+                break;
+            case 2:
+                myDS.setRockLosses(myDS.getRockLosses()+1);
+                break;
+            case 3:
+                myDS.setPaperLosses(myDS.getPaperLosses()+1);
+                break;
+            case 4:
+                myDS.setLizardLosses(myDS.getLizardLosses()+1);
+                break;
+            case 5:
+                myDS.setSpockLosses(myDS.getSpockLosses()+1);
+                break;
         }
-        if (playPlayer == 1) {
-            dsLeonard.setRockWins(dsLeonard.getRockWins() + 1);
-        } else if (playPlayer == 2){
-            dsLeonard.setPaperWins(dsLeonard.getPaperWins()+1);
-        } else if (playPlayer == 3){
-            dsLeonard.setScissorsWins(dsLeonard.getScissorsWins()+1);
-        } else if (playPlayer == 4){
-            dsLeonard.setLizardWins(dsLeonard.getLizardWins()+1);
-        } else if (playPlayer == 5) {
-            dsLeonard.setSpockWins(dsLeonard.getSpockWins() + 1);
+
+
+        switch (player1ID){
+            case 1:
+                myDS.setSlot1wins(myDS.getSlot1wins()+1);
+                if (player2ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player2ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player2ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player2ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }else if (player2ID == 6) {
+                    myDS.setLeonardLosses(myDS.getLeonardLosses() + 1);
+                }else if (player2ID == 7) {
+                    myDS.setPennyLosses(myDS.getPennyLosses() + 1);
+                }else if (player2ID == 8) {
+                    myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 2:
+                myDS.setSlot2wins(myDS.getSlot2wins()+1);
+                if (player2ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                } else if (player2ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player2ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player2ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }else if (player2ID == 6) {
+                    myDS.setLeonardLosses(myDS.getLeonardLosses() + 1);
+                }else if (player2ID == 7) {
+                    myDS.setPennyLosses(myDS.getPennyLosses() + 1);
+                }else if (player2ID == 8) {
+                    myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 3:
+                myDS.setSlot3wins(myDS.getSlot3wins()+1);
+                if (player2ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player2ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player2ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player2ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }else if (player2ID == 6) {
+                    myDS.setLeonardLosses(myDS.getLeonardLosses() + 1);
+                }else if (player2ID == 7) {
+                    myDS.setPennyLosses(myDS.getPennyLosses() + 1);
+                }else if (player2ID == 8) {
+                    myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 4:
+                myDS.setSlot4wins(myDS.getSlot4wins()+1);
+                if (player2ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player2ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player2ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player2ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }else if (player2ID == 6) {
+                    myDS.setLeonardLosses(myDS.getLeonardLosses() + 1);
+                }else if (player2ID == 7) {
+                    myDS.setPennyLosses(myDS.getPennyLosses() + 1);
+                }else if (player2ID == 8) {
+                    myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 5:
+                myDS.setSlot5wins(myDS.getSlot5wins()+1);
+                if (player2ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player2ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player2ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player2ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player2ID == 6) {
+                    myDS.setLeonardLosses(myDS.getLeonardLosses() + 1);
+                }else if (player2ID == 7) {
+                    myDS.setPennyLosses(myDS.getPennyLosses() + 1);
+                }else if (player2ID == 8) {
+                    myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
         }
     }
-    public void playerLoses(int playComputer, int playPlayer){
-        erbitten();
-        dsLeonard.setLeonardWins(dsLeonard.getLeonardWins() + 1);
-        if (player1ID == 1) {
-            dsLeonard.setSlot1losses(dsLeonard.getSlot1losses() + 1);
-        } else if (player1ID == 2) {
-            dsLeonard.setSlot2losses(dsLeonard.getSlot2losses()+1);
-        } else if (player1ID == 3) {
-            dsLeonard.setSlot3losses(dsLeonard.getSlot3losses() + 1);
-        } else if (player1ID == 4) {
-            dsLeonard.setSlot4losses(dsLeonard.getSlot4losses() + 1);
-        } else if (player1ID == 5) {
-            dsLeonard.setSlot5losses(dsLeonard.getSlot5losses() + 1);
+    public void playerTwoWins(int playComputer, int playPlayer){
+        pullStatistics();
+
+        switch (playComputer){
+            case 1:
+                myDS.setScissorsWins(myDS.getScissorsWins()+1);
+                break;
+            case 2:
+                myDS.setRockWins(myDS.getRockWins()+1);
+                break;
+            case 3:
+                myDS.setPaperWins(myDS.getPaperWins()+1);
+                break;
+            case 4:
+                myDS.setLizardWins(myDS.getLizardWins()+1);
+                break;
+            case 5:
+                myDS.setSpockWins(myDS.getSpockWins()+1);
+                break;
         }
-        if(playComputer == 1) {
-            dsLeonard.setRockWins(dsLeonard.getRockWins() + 1);
-        } else if (playComputer == 2){
-            dsLeonard.setPaperWins(dsLeonard.getPaperWins()+1);
-        } else if (playComputer == 3){
-            dsLeonard.setScissorsWins(dsLeonard.getScissorsWins()+1);
-        } else if (playComputer == 4){
-            dsLeonard.setLizardWins(dsLeonard.getLizardWins()+1);
-        } else if (playComputer == 5) {
-            dsLeonard.setSpockWins(dsLeonard.getSpockWins()+1);
+        switch (playPlayer){
+            case 1:
+                myDS.setScissorsLosses(myDS.getScissorsLosses()+1);
+                break;
+            case 2:
+                myDS.setRockLosses(myDS.getRockLosses()+1);
+                break;
+            case 3:
+                myDS.setPaperLosses(myDS.getPaperLosses()+1);
+                break;
+            case 4:
+                myDS.setLizardLosses(myDS.getLizardLosses()+1);
+                break;
+            case 5:
+                myDS.setSpockLosses(myDS.getSpockLosses()+1);
+                break;
         }
-        if (playPlayer == 1) {
-            dsLeonard.setRockLosses(dsLeonard.getRockLosses() + 1);
-        } else if (playPlayer == 2){
-            dsLeonard.setPaperLosses(dsLeonard.getPaperLosses()+1);
-        } else if (playPlayer == 3){
-            dsLeonard.setScissorsLosses(dsLeonard.getScissorsLosses()+1);
-        } else if (playPlayer == 4){
-            dsLeonard.setLizardLosses(dsLeonard.getLizardLosses()+1);
-        } else if (playPlayer == 5) {
-            dsLeonard.setSpockLosses(dsLeonard.getSpockLosses() + 1);
+
+        switch (player2ID){
+            case 1:
+                myDS.setSlot1wins(myDS.getSlot1wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 2:
+                myDS.setSlot2wins(myDS.getSlot2wins()+1);
+                if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 3:
+                myDS.setSlot3wins(myDS.getSlot3wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 4:
+                myDS.setSlot4wins(myDS.getSlot4wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 5:
+                myDS.setSlot5wins(myDS.getSlot5wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 6:
+                myDS.setSlot5wins(myDS.getSlot5wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 7:
+                myDS.setSlot5wins(myDS.getSlot5wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
+            case 8:
+                myDS.setSlot5wins(myDS.getSlot5wins()+1);
+                if (player1ID == 2) {
+                    myDS.setSlot2losses(myDS.getSlot2losses() + 1);
+                } else if (player1ID == 3) {
+                    myDS.setSlot3losses(myDS.getSlot3losses() + 1);
+                }else if (player1ID == 4) {
+                    myDS.setSlot4losses(myDS.getSlot4losses() + 1);
+                }else if (player1ID == 1) {
+                    myDS.setSlot1losses(myDS.getSlot1losses() + 1);
+                }else if (player1ID == 5) {
+                    myDS.setSlot5losses(myDS.getSlot5losses() + 1);
+                }
+                round++;
+                turn = 1;
+                break;
         }
     }
     public void draw(int drawElement){
-        erbitten();
-        dsLeonard.setLeonardDraws(dsLeonard.getLeonardDraws() + 1);
+        pullStatistics();
+        myDS.setLeonardDraws(myDS.getLeonardDraws() + 1);
         if (player1ID == 1) {
-            dsLeonard.setSlot1draws(dsLeonard.getSlot1draws() + 1);
+            myDS.setSlot1draws(myDS.getSlot1draws() + 1);
         } else if (player1ID == 2) {
-            dsLeonard.setSlot2draws(dsLeonard.getSlot2draws() + 1);
+            myDS.setSlot2draws(myDS.getSlot2draws() + 1);
         } else if (player1ID == 3) {
-            dsLeonard.setSlot3draws(dsLeonard.getSlot3draws() + 1);
+            myDS.setSlot3draws(myDS.getSlot3draws() + 1);
         } else if (player1ID == 4) {
-            dsLeonard.setSlot4draws(dsLeonard.getSlot4draws() + 1);
+            myDS.setSlot4draws(myDS.getSlot4draws() + 1);
         } else if (player1ID == 5) {
-            dsLeonard.setSlot5draws(dsLeonard.getSlot5draws() + 1);
+            myDS.setSlot5draws(myDS.getSlot5draws() + 1);
         }
         if(drawElement == 1) {
-            dsLeonard.setRockDraws(dsLeonard.getRockDraws() + 1);
+            myDS.setRockDraws(myDS.getRockDraws() + 1);
         } else if (drawElement == 2){
-            dsLeonard.setPaperDraws(dsLeonard.getPaperDraws()+1);
+            myDS.setPaperDraws(myDS.getPaperDraws()+1);
         } else if (drawElement == 3){
-            dsLeonard.setScissorsDraws(dsLeonard.getScissorsDraws()+1);
+            myDS.setScissorsDraws(myDS.getScissorsDraws()+1);
         } else if (drawElement == 4){
-            dsLeonard.setLizardDraws(dsLeonard.getLizardDraws()+1);
+            myDS.setLizardDraws(myDS.getLizardDraws()+1);
         } else if (drawElement == 5) {
-            dsLeonard.setSpockDraws(dsLeonard.getSpockDraws()+1);
+            myDS.setSpockDraws(myDS.getSpockDraws()+1);
+        }
+        round++;
+        turn = 1;
+    }
+
+    public void endRound(){
+        switch (WinnerCalculation.calculateWinner(playhero, playnemesis)){
+            case 0:
+                //textResult.setText(myST.changeStatusText(playhero));
+                draw(playhero);
+                break;
+            case 1:
+                //textResult.setText(myST.changeStatusText(playhero, playnemesis, 1));
+                playerOneWins(playnemesis, playhero);
+                break;
+            case 2:
+                //textResult.setText(myST.changeStatusText(playhero, playnemesis, 2));
+                playerTwoWins(playnemesis, playhero);
+                break;
+            default:
+                break;
         }
     }
+
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
-        turns = savedInstanceState.getInt("turns");
+        round = savedInstanceState.getInt("round");
         compwin = savedInstanceState.getInt("compwin");
         playerwin = savedInstanceState.getInt("playerwin");
-        erbitten();
+        pullStatistics();
         refreshStatus();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("turns", turns);
+        outState.putInt("round", round);
         outState.putInt("compwin", compwin);
         outState.putInt("playerwin", playerwin);
-        teilen(dsLeonard);
+        pushStatistics(myDS);
     }
 
      public void onClickQuit(View v){
