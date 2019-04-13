@@ -154,10 +154,13 @@ public class GameActivity extends AppCompatActivity {
                 turn = 2;
             } else if (player2ID == 6){
                 playnemesis = Strategy.playLeonard();
+                endRound();
             } else if (player2ID == 7){
                 playnemesis = Strategy.playPenny();
+                endRound();
             } else if (player2ID == 8){
                 playnemesis = Strategy.playSheldon();
+                endRound();
             }
         } else if (turn == 2){
             playnemesis = 1;
@@ -170,6 +173,15 @@ public class GameActivity extends AppCompatActivity {
             playhero = 2;
             if (player2ID <= 5){
                 turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            } else if (player2ID == 7){
+                playnemesis = Strategy.playPenny();
+                endRound();
+            } else if (player2ID == 8){
+                playnemesis = Strategy.playSheldon();
+                endRound();
             } else if (player2ID == 6){
                 playnemesis = Strategy.playLeonard();
                 endRound();
@@ -188,6 +200,15 @@ public class GameActivity extends AppCompatActivity {
             } else if (player2ID == 6){
                 playnemesis = Strategy.playLeonard();
                 endRound();
+            } else if (player2ID == 7){
+                playnemesis = Strategy.playPenny();
+                endRound();
+            } else if (player2ID == 8){
+                playnemesis = Strategy.playSheldon();
+                endRound();
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
             }
         } else if (turn == 2){
             playnemesis = 3;
@@ -203,6 +224,15 @@ public class GameActivity extends AppCompatActivity {
             } else if (player2ID == 6){
                 playnemesis = Strategy.playLeonard();
                 endRound();
+            } else if (player2ID == 7){
+                playnemesis = Strategy.playPenny();
+                endRound();
+            } else if (player2ID == 8){
+                playnemesis = Strategy.playSheldon();
+                endRound();
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
             }
         } else if (turn == 2){
             playnemesis = 4;
@@ -215,6 +245,15 @@ public class GameActivity extends AppCompatActivity {
             playhero = 5;
             if (player2ID <= 5){
                 turn = 2;
+            } else if (player2ID == 6){
+                playnemesis = Strategy.playLeonard();
+                endRound();
+            } else if (player2ID == 7){
+                playnemesis = Strategy.playPenny();
+                endRound();
+            } else if (player2ID == 8){
+                playnemesis = Strategy.playSheldon();
+                endRound();
             } else if (player2ID == 6){
                 playnemesis = Strategy.playLeonard();
                 endRound();
@@ -322,8 +361,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player2ID == 8) {
                     myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 2:
                 myDS.setSlot2wins(myDS.getSlot2wins()+1);
@@ -342,8 +379,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player2ID == 8) {
                     myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 3:
                 myDS.setSlot3wins(myDS.getSlot3wins()+1);
@@ -362,8 +397,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player2ID == 8) {
                     myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 4:
                 myDS.setSlot4wins(myDS.getSlot4wins()+1);
@@ -382,8 +415,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player2ID == 8) {
                     myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 5:
                 myDS.setSlot5wins(myDS.getSlot5wins()+1);
@@ -402,10 +433,9 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player2ID == 8) {
                     myDS.setSheldonLosses(myDS.getSheldonLosses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
         }
+        pushStatistics(myDS);
     }
     public void playerTwoWins(int playComputer, int playPlayer){
         pullStatistics();
@@ -457,8 +487,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 2:
                 myDS.setSlot2wins(myDS.getSlot2wins()+1);
@@ -471,8 +499,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 3:
                 myDS.setSlot3wins(myDS.getSlot3wins()+1);
@@ -485,8 +511,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 4:
                 myDS.setSlot4wins(myDS.getSlot4wins()+1);
@@ -499,8 +523,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 5:
                 myDS.setSlot5wins(myDS.getSlot5wins()+1);
@@ -513,8 +535,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 1) {
                     myDS.setSlot1losses(myDS.getSlot1losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 6:
                 myDS.setSlot5wins(myDS.getSlot5wins()+1);
@@ -529,8 +549,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 7:
                 myDS.setSlot5wins(myDS.getSlot5wins()+1);
@@ -545,8 +563,6 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
             case 8:
                 myDS.setSlot5wins(myDS.getSlot5wins()+1);
@@ -561,10 +577,9 @@ public class GameActivity extends AppCompatActivity {
                 }else if (player1ID == 5) {
                     myDS.setSlot5losses(myDS.getSlot5losses() + 1);
                 }
-                round++;
-                turn = 1;
                 break;
         }
+        pushStatistics(myDS);
     }
     public void draw(int drawElement){
         pullStatistics();
@@ -591,8 +606,7 @@ public class GameActivity extends AppCompatActivity {
         } else if (drawElement == 5) {
             myDS.setSpockDraws(myDS.getSpockDraws()+1);
         }
-        round++;
-        turn = 1;
+        pushStatistics(myDS);
     }
 
     public void endRound(){
@@ -612,6 +626,10 @@ public class GameActivity extends AppCompatActivity {
             default:
                 break;
         }
+        round++;
+        turn = 1;
+        playnemesis = 0;
+        playhero = 0;
     }
 
 
@@ -637,5 +655,7 @@ public class GameActivity extends AppCompatActivity {
      public void onClickQuit(View v){
          Intent intent = new Intent(GameActivity.this, MainActivity.class);
          startActivity(intent);
+         myDS.setPlayer1(0);
+         myDS.setPlayer2(0);
      }
 }
