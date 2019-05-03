@@ -1,7 +1,6 @@
 package bim17.sspes;
 
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -9,30 +8,48 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
-
 import java.util.Random;
 
+/* Class to show and play the game
+ * @author Carolin Ludwig, Sabrina Krietsch, Lena Glaesener
+ * @version 1.0 5.2019
+ */
 public class GameActivity extends AppCompatActivity {
-
+    //elements of the activity
     ImageButton btnScissor, btnRock, btnPaper, btnLizard, btnSpock;
     TextView textStatus, textResult, textLennard;
-    Random rndGen; //Zufallsgenerator
-    public int playhero, playnemesis; //Variable fuer Auswahl des Computers
-    int round, compwin, playerwin, turn;
-    int player1ID, player2ID;
+
+    //random number generator
+    Random rndGen;
+
+    //play choices of players
+    int playhero, playnemesis;
+
+    //different variables to save game information
+    int round, compwin, playerwin, turn, player1ID, player2ID;
+
+    //short time memory
     DataStorage myDS;
+
+    //long time memory
     SharedPreferences mySP;
+
+    //Object for status text
     StatusText myST;
-    String nemesis;
-    String hero;
 
+    //name of player 1 and two
+    String nemesis, hero;
 
+    /* Method to start Activity
+     * @param Bundle savedInstanceState The saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        //connecting the elements with the element of the xml-file
         btnScissor = findViewById(R.id.btnScissor);
         btnRock = findViewById(R.id.btnRock);
         btnPaper = findViewById(R.id.btnPaper);
@@ -41,112 +58,31 @@ public class GameActivity extends AppCompatActivity {
         textStatus = findViewById(R.id.textStatus);
         textResult = findViewById(R.id.textResult);
         textLennard = findViewById(R.id.textLennard);
+
+        //initiate different objects
         myST = new StatusText();
         rndGen = new Random();
+
+        //set variable to zero for beginning of new game
         round = 0;
+
+        //initiating the longtime memory
         mySP = getSharedPreferences("myData", MODE_PRIVATE);
+
+        //get data from long time memory into short time memory
         pullStatistics();
+
+        //get data from short time memory
         player1ID = myDS.getPlayer1();
         player2ID = myDS.getPlayer2();
+
+        //get data from long time memory into variable
         nemesis = getPlayerName(player1ID);
         hero = getPlayerName(player2ID);
+
+        //have player one start the game
         turn = 1;
 
-
-
-
-        /*
-        btnScissor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (turn == 1){
-                    playhero = 1;
-                    if (player2ID <= 5){
-                        turn = 2;
-                    } else if (player2ID == 6){
-                        playnemesis = Strategy.playLeonard();
-                        endRound();
-                    }
-                } else if (turn == 2){
-                    playnemesis = 1;
-                    endRound();
-                }
-            }
-        });
-
-
-        btnRock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (turn == 1){
-                    playhero = 2;
-                    if (player2ID <= 5){
-                        turn = 2;
-                    } else if (player2ID == 6){
-                        playnemesis = Strategy.playLeonard();
-                        endRound();
-                    }
-                } else if (turn == 2){
-                    playnemesis = 2;
-                    endRound();
-                }
-            }
-        });
-
-        btnPaper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (turn == 1){
-                    playhero = 3;
-                    if (player2ID <= 5){
-                        turn = 2;
-                    } else if (player2ID == 6){
-                        playnemesis = Strategy.playLeonard();
-                        endRound();
-                    }
-                } else if (turn == 2){
-                    playnemesis = 3;
-                    endRound();
-                }
-            }
-        });
-
-        btnLizard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (turn == 1){
-                    playhero = 4;
-                    if (player2ID <= 5){
-                        turn = 2;
-                    } else if (player2ID == 6){
-                        playnemesis = Strategy.playLeonard();
-                        endRound();
-                    }
-                } else if (turn == 2){
-                    playnemesis = 4;
-                    endRound();
-                }
-            }
-        });
-
-        btnSpock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (turn == 1){
-                    playhero = 5;
-                    if (player2ID <= 5){
-                        turn = 2;
-                    } else if (player2ID == 6){
-                        playnemesis = Strategy.playLeonard();
-                        endRound();
-                    }
-                } else if (turn == 2){
-                    playnemesis = 5;
-                    endRound();
-                }
-            }
-        });
-        */
     }
 
     public void onClickScissors(View v){

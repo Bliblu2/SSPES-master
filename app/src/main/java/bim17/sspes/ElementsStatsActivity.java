@@ -13,29 +13,32 @@ import com.google.gson.Gson;
  * @version 1.0 03.2019
  */
 public class ElementsStatsActivity extends MainActivity {
-    // SharedPreferences-Object for long time safe
+    // SharedPreferences-Object for long time memory
     SharedPreferences mySP;
 
-    //DataStorage-Object for short time safe
+    //DataStorage-Object for short time memory
     DataStorage myDS;
 
     //Declare Buttons and Textviews
-    Button btnMainMenu; //Button for navigation
-    Button btnDelete;  //Button for deletion in DataStorage
-    TextView txtWins, txtLosses, txtDraws; //TextViews with fixed text
-    TextView txtRockWins, txtRockLosses, txtRockDraws; //TextViews for variable
-    TextView txtPaperWins, txtPaperLosses, txtPaperDraws; //TextViews for variable
-    TextView txtScissorsWins, txtScissorsLosses, txtScissorsDraws; //TextViews for variable
-    TextView txtLizardWins, txtLizardLosses, txtLizardDraws; //TextViews for variable
-    TextView txtSpockWins, txtSpockLosses, txtSpockDraws; //TextViews for variable
+    Button btnMainMenu;
+    Button btnDelete;
+    TextView txtWins, txtLosses, txtDraws;
+    TextView txtRockWins, txtRockLosses, txtRockDraws;
+    TextView txtPaperWins, txtPaperLosses, txtPaperDraws;
+    TextView txtScissorsWins, txtScissorsLosses, txtScissorsDraws;
+    TextView txtLizardWins, txtLizardLosses, txtLizardDraws;
+    TextView txtSpockWins, txtSpockLosses, txtSpockDraws;
 
+    /* Method used when opening the activity.
+     * @param Bundle savedInstanceState The saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //initialize Instance and set layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elements_stats);
 
-        //initialize Shared-Preference-Object
+        //initialize long time memory
         mySP = getSharedPreferences("myData", MODE_PRIVATE);
 
         //Connect object with views
@@ -66,12 +69,11 @@ public class ElementsStatsActivity extends MainActivity {
         txtSpockLosses = findViewById(R.id.txtSpockLosses);
         txtSpockDraws = findViewById(R.id.txtSpockDraws);
 
-        //Fill statistics table with data from DataStorage
+        //Fill statistics table with data from short time memory
         fillTable();
     }
 
-    /* Get data from SharedPreference-Object and safe in DataStorage-Object. If SP-Object empty,
-     * create new DataStorage-Object.
+    /* Get data from long time memory and safe in short time memory.
      */
     public void pullStatistics(){
         Gson gson = new Gson();
@@ -82,7 +84,7 @@ public class ElementsStatsActivity extends MainActivity {
         }
     }
 
-    /* Safe data from DataStorage-Object in SharedPreferences-Object as JSON.
+    /* Safe data from short time memory in long time memory as JSON.
      */
     public void pushStatistics(){
         SharedPreferences.Editor myEditor = mySP.edit();
